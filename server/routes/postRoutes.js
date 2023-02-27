@@ -6,6 +6,7 @@ import Post from '../mongodb/models/post.js';
 
 dotenv.config();
 
+
 const router = express.Router();
 
 cloudinary.config({
@@ -14,6 +15,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+// get all posts
 router.route('/').get(async (req, res) => {
   try {
     const posts = await Post.find({});
@@ -23,6 +25,7 @@ router.route('/').get(async (req, res) => {
   }
 });
 
+// create a post
 router.route('/').post(async (req, res) => {
   try {
     const { name, prompt, photo } = req.body;
